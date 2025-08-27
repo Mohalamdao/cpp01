@@ -1,23 +1,40 @@
-#include <string>
 #include <iostream>
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 
 int main()
 {
-    std::string string = "moha";
-    std::string &stringREF = string;
-    std::string *stringPTR = &string;
+    std::cout << "=== Test de base : polymorphisme ===" << std::endl;
 
-    std::cout << string << std::endl ; 
-    std::cout << stringREF << std::endl ; 
-    std::cout << *stringPTR << std::endl ;
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
 
-    *stringPTR = "changement";
-    std::cout << string << std::endl ; 
-    std::cout << stringREF << std::endl ;
-    std::cout << *stringPTR << std::endl ;
+    std::cout << j->getType() << " : ";
+    j->makeSound();
+    std::cout << i->getType() << " : ";
+    i->makeSound();
 
-    std::cout << &string << std::endl ; 
-    std::cout << &stringREF << std::endl ;
-    std::cout << &stringPTR << std::endl ;
+    delete j;
+    delete i;
 
+    std::cout << "\n=== Vérification de la copie profonde ===" << std::endl;
+
+    Dog basicDog;
+    basicDog.setIdea(0, "Manger");
+    basicDog.setIdea(1, "Dormir");
+
+    Dog copiedDog = basicDog;
+    std::cout << "Copie - Idée 0 : " << copiedDog.getIdea(0) << std::endl;
+    std::cout << "Copie - Idée 1 : " << copiedDog.getIdea(1) << std::endl;
+
+    basicDog.setIdea(0, "Nouvelle idée");;
+    {
+        Dog d;
+        Cat c;
+        d.makeSound();
+        c.makeSound();
+    }
+
+    return 0;
 }

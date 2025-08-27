@@ -2,9 +2,9 @@ CC = c++
 
 CPP_FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp  zombie.cpp \
+SRCS = Animal.cpp main.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp  \
 
-NAME = zombie
+NAME = WrongAnimal
 
 MY_OBJECTS = $(SRCS:.cpp=.o)
 
